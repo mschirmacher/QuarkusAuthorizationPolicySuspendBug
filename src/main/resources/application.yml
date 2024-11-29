@@ -1,0 +1,6 @@
+quarkus:
+  smallrye-jwt:
+    enabled: true
+  http:
+    auth:
+      proactive: false
