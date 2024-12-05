@@ -1,4 +1,4 @@
-package org.acme.auth
+package org.acme.security.auth
 
 import io.netty.handler.codec.http.HttpHeaderNames
 import io.netty.handler.codec.http.HttpResponseStatus
@@ -23,7 +23,7 @@ class CustomAuthMechanism : HttpAuthenticationMechanism {
         context: RoutingContext,
         identityProviderManager: IdentityProviderManager
     ): Uni<SecurityIdentity> {
-        val jwtToken = UUID.randomUUID().toString()
+        val jwtToken = "test"
 
         return identityProviderManager.authenticate(
             HttpSecurityUtils.setRoutingContextAttribute(

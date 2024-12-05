@@ -1,4 +1,4 @@
-package org.acme.auth
+package org.acme.security.auth
 
 import io.quarkus.security.identity.request.BaseAuthenticationRequest
 

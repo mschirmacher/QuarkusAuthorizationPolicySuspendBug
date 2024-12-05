@@ -28,6 +28,7 @@ dependencies {
     implementation("io.quarkus:quarkus-vertx-http-deployment")
     implementation("io.quarkus:quarkus-hibernate-validator")
     implementation("io.quarkus:quarkus-rest-jackson")
+    implementation("io.quarkus:quarkus-rest-client-jackson")
     implementation("io.quarkus:quarkus-messaging-kafka")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -52,6 +53,8 @@ dependencies {
     }
     testImplementation("io.rest-assured:rest-assured")
     testImplementation("org.hamcrest:hamcrest")
+    testImplementation("io.quarkiverse.wiremock:quarkus-wiremock:1.4.0")
+    testImplementation("io.quarkiverse.wiremock:quarkus-wiremock-test:1.4.0")
 
 }
 
