@@ -7,14 +7,13 @@ import io.quarkus.security.identity.SecurityIdentity
 import io.quarkus.security.runtime.QuarkusSecurityIdentity
 import io.quarkus.vertx.http.runtime.security.HttpSecurityUtils
 import io.smallrye.mutiny.Uni
-import io.smallrye.mutiny.uni
 import io.vertx.ext.web.RoutingContext
 import jakarta.enterprise.context.ApplicationScoped
 import org.eclipse.microprofile.rest.client.inject.RestClient
 
 @ApplicationScoped
 class CustomIdentityProvider(
-    private val externalServiceCaller: ExternalServiceCaller
+    @RestClient private val externalService: ExternalServiceClient
 ) :
     IdentityProvider<CustomAuthRequest> {
     override fun getRequestType(): Class<CustomAuthRequest> =
@@ -24,7 +23,7 @@ class CustomIdentityProvider(
         request: CustomAuthRequest,
         context: AuthenticationRequestContext
     ): Uni<SecurityIdentity> =
-        externalServiceCaller.validateToken(request.token).map { tokenInfo ->
+        externalService.getTokenInfo(request.token).map { tokenInfo ->
 
             if (tokenInfo.isValid) {
 
